@@ -1,27 +1,27 @@
 steps:
-  - name: "gcr.io/cloud-builders/docker"
-    args:
-      - "build"
-      - "-t"
-      - "us-central1-docker.pkg.dev/test-shared-pkim/pkim-images/service-opt-cloud-run:$SHORT_SHA"
-      - "."
-  - name: "gcr.io/cloud-builders/docker"
-    args:
-      - "push"
-      - "us-central1-docker.pkg.dev/test-shared-pkim/pkim-images/service-opt-cloud-run:$SHORT_SHA"
-  - name: "gcr.io/cloud-builders/gcloud"
-    args:
-      - "run"
-      - "deploy"
-      - "service-opt-cloud-run"
-      - "--image=us-central1-docker.pkg.dev/test-shared-pkim/pkim-images/service-opt-cloud-run:$SHORT_SHA"
-      - "--region=us-central1" # Changed region
-      - "--platform=managed"
-      - "--allow-unauthenticated"
+    - name: "gcr.io/cloud-builders/docker"
+      args:
+          - "build"
+          - "-t"
+          - "us-central1-docker.pkg.dev/test-shared-pkim/pkim-images/service-opt-cloud-run:$SHORT_SHA"
+          - "."
+    - name: "gcr.io/cloud-builders/docker"
+      args:
+          - "push"
+          - "us-central1-docker.pkg.dev/test-shared-pkim/pkim-images/service-opt-cloud-run:$SHORT_SHA"
+    - name: "gcr.io/cloud-builders/gcloud"
+      args:
+          - "run"
+          - "deploy"
+          - "service-opt-cloud-run"
+          - "--image=us-central1-docker.pkg.dev/test-shared-pkim/pkim-images/service-opt-cloud-run:$SHORT_SHA"
+          - "--region=us-central1" # Changed region
+          - "--platform=managed"
+          - "--allow-unauthenticated"
 images:
-  - "us-central1-docker.pkg.dev/test-shared-pkim/pkim-images/service-opt-cloud-run:$SHORT_SHA"
+    - "us-central1-docker.pkg.dev/test-shared-pkim/pkim-images/service-opt-cloud-run:$SHORT_SHA"
 options: # Added options for logging
-  defaultLogsBucketBehavior: REGIONAL_USER_OWNED_BUCKET # Option B: Use regional bucket
-  #  logging: CLOUD_LOGGING_ONLY   # Option C: Use Cloud Logging only
-  #  logging: NONE                # Option C: Disable Cloud Storage logs
-  serviceAccount: "projects/test-shared-pkim/serviceAccounts/svc-pkim@test-shared-pkim.iam.gserviceaccount.com" #Added service account
+    defaultLogsBucketBehavior: REGIONAL_USER_OWNED_BUCKET # Option B: Use regional bucket
+    #  logging: CLOUD_LOGGING_ONLY   # Option C: Use Cloud Logging only
+    #  logging: NONE                # Option C: Disable Cloud Storage logs
+    serviceAccount: "projects/test-shared-pkim/serviceAccounts/svc-pkim@test-shared-pkim.iam.gserviceaccount.com" #Added service account
