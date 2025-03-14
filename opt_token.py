@@ -20,7 +20,6 @@ app = Flask(__name__)
 
 # Basic infos (You might want to set these via environment variables)
 auth_type = 'totp'
-#testing cloud build CI/CD122
 
 # Setting Google Storage services instances
 storage_client = storage.Client()
@@ -47,12 +46,13 @@ def get_logo(logo_file_name):
 
 
 def connect_cloud_postgres():
-    instance_connection_name = os.environ["INSTANCE_CONNECTION_NAME"]
-    db_name = os.environ["DB_NAME"]
-    db_user = os.environ["DB_USER"]
+    instance_connection_name = os.environ.get["INSTANCE_CONNECTION_NAME"]
+    db_name = os.environ.get["DB_NAME"]
+    db_user = os.environ.get["DB_USER"]
     ip_type = IPTypes.PRIVATE if os.environ.get("PRIVATE_IP") else IPTypes.PUBLIC
 
     connector = Connector(ip_type)
+    print(f"{instance_connection_name}  {db_name}  {db_user}  {ip_type}")
 
     conn = connector.connect(
         instance_connection_name,
