@@ -1,0 +1,22 @@
+steps:
+  - name: "gcr.io/cloud-builders/docker"
+    args:
+      - "build"
+      - "-t"
+      - "us-central1-docker.pkg.dev/test-shared-pkim/pkim-images/service-opt-cloud-run:$SHORT_SHA"
+      - "."
+  - name: "gcr.io/cloud-builders/docker"
+    args:
+      - "push"
+      - "us-central1-docker.pkg.dev/test-shared-pkim/pkim-images/service-opt-cloud-run:$SHORT_SHA"
+  - name: "gcr.io/cloud-builders/gcloud"
+    args:
+      - "run"
+      - "deploy"
+      - "service-opt-cloud-run"
+      - "--image=us-central1-docker.pkg.dev/test-shared-pkim/pkim-images/service-opt-cloud-run:$SHORT_SHA"
+      - "--region=YOUR_REGION"
+      - "--platform=managed"
+      - "--allow-unauthenticated"
+images:
+  - "us-central1-docker.pkg.dev/test-shared-pkim/pkim-images/service-opt-cloud-run:$SHORT_SHA"
