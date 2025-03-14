@@ -20,7 +20,7 @@ app = Flask(__name__)
 
 # Basic infos (You might want to set these via environment variables)
 auth_type = 'totp'
-#testing cloud build CI/CD111
+#testing cloud build CI/CD122
 
 # Setting Google Storage services instances
 storage_client = storage.Client()
