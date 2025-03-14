@@ -46,9 +46,9 @@ def get_logo(logo_file_name):
 
 
 def connect_cloud_postgres():
-    instance_connection_name = os.environ.get["INSTANCE_CONNECTION_NAME"]
-    db_name = os.environ.get["DB_NAME"]
-    db_user = os.environ.get["DB_USER"]
+    instance_connection_name = os.environ.get("INSTANCE_CONNECTION_NAME")
+    db_name = os.environ.get("DB_NAME")
+    db_user = os.environ.get("DB_USER")
     ip_type = IPTypes.PRIVATE if os.environ.get("PRIVATE_IP") else IPTypes.PUBLIC
 
     connector = Connector(ip_type)
