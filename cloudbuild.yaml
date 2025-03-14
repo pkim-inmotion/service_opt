@@ -23,5 +23,5 @@ images:
 options:
   logging: CLOUD_LOGGING_ONLY  # Or your preferred logging option
   defaultLogsBucketBehavior: REGIONAL_USER_OWNED_BUCKET # Or your bucket option
-  runWith:
-    serviceAccount: "projects/test-shared-pkim/serviceAccounts/svc-pkim@test-shared-pkim.iam.gserviceaccount.com"
+  #runWith:
+  #  serviceAccount: "projects/test-shared-pkim/serviceAccounts/svc-pkim@test-shared-pkim.iam.gserviceaccount.com"
