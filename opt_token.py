@@ -21,6 +21,7 @@ app = Flask(__name__)
 # Basic infos (You might want to set these via environment variables)
 auth_type = 'totp'
 
+
 # Setting Google Storage services instances
 storage_client = storage.Client()
 bucket_name = os.environ.get('BUCKET_NAME', 'bco_popular_authenticator') # Get from env or default
